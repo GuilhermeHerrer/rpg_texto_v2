@@ -1,4 +1,4 @@
-# rpg_texto_v2
+# Dungeon_Crawler_Texto
 
 Um Roguelite Dungeon Crawler com 5 bosses únicos.
 
