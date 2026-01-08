@@ -199,10 +199,10 @@ impl Inimigo {
                 eh_chefe: true, id: 15,
             },
             5 => Self { 
-                nome: String::from("PARCEIRO (BOSS)"), 
+                nome: String::from("BERI (BOSS)"), 
                 vida: 400, vida_max: 400,
                 dano: 10, 
-                str_atk: String::from("Parceiro carrega as águas da morte em sua boia e a arremesa!"),
+                str_atk: String::from("Beri carrega as águas da morte em sua boia e a arremesa!"),
                 eh_chefe: true, id: 16,
             },
             _ => Self { 
@@ -272,7 +272,7 @@ impl Inimigo {
         }
     }
 
-    fn ataques_parceiro(&mut self, heroi: &mut Heroi) {
+    fn ataques_beri(&mut self, heroi: &mut Heroi) {
         let rng = rand::thread_rng().gen_range(1..=10);
         let mut _dano: i16 = 0;
 
