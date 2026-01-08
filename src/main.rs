@@ -547,7 +547,7 @@ fn combate(heroi: &mut Heroi, inimigo: &mut Inimigo,pocoes: &mut u8, &_rounds: &
                         13 => inimigo.ataques_praga(heroi),
                         14 => inimigo.ataques_dragao(heroi),
                         15 => inimigo.ataques_obheeno(heroi),
-                        16 => inimigo.ataques_parceiro(heroi),
+                        16 => inimigo.ataques_beri(heroi),
                         _ => inimigo.ataques_guardiao(heroi),
                     }
                 } else {
