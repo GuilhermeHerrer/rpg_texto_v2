@@ -72,7 +72,7 @@ impl Heroi {
             }
         }
     } 
-    println!("Atributos finais:\nVida:{}\nForça:{}\nMente:{}\nAgilidade:{}\nVida adicional pela força: {}\nChance de esquiva(máx: 50%): {}%\n", self.atributos.vida_max, self.atributos.forca, self.atributos.mente, self.atributos.agilidade, self.atributos.forca * 5, if self.atributos.agilidade *2 > 40{40}else{self.atributos.agilidade*2});
+    println!("Atributos finais:\nVida:{}\nForça:{}\nMente:{}\nAgilidade:{}\nVida adicional pela força: {}\nChance de esquiva(máx: 50%): {}%\n", self.atributos.vida_max, self.atributos.forca, self.atributos.mente, self.atributos.agilidade, self.atributos.forca * 5, if self.atributos.agilidade *2 > 50{50}else{self.atributos.agilidade*2});
         
     }
 }
@@ -458,27 +458,26 @@ fn main() {
                 break;
             }
             
+            println!("\nVitória! Você derrotou o {}!", inimigo.nome);
 
             let arma = Arma::armas();            
             println!("\n{} vasculhou a sala e achou {} de raridade {}", heroi.nome, arma.nome, arma.raridade);
             println!("\n--- Multiplicadadores da Arma ---\nCortante: {}x\nMágico: {}x\nPerfurante: {}x\n", arma.cortante, arma.magico, arma.perfurante);
             aceitar_drop(arma, &mut heroi);
 
-            let soma_pontos = if dificil == true{2}else{0};
-
             if inimigo.eh_chefe == true{
                 ciclos += 1;
                 rounds += 1;
-                println!("Que luta! ganhou uma grande quantidade de conhecimento!");
-                heroi.distribuir_pontos(3+soma_pontos);
+                println!("\nQue luta! ganhou uma grande quantidade de conhecimento!");
+                heroi.distribuir_pontos(3);
             }else {
-                println!("\nVitória! Você derrotou o {}!", inimigo.nome);
                 rounds += 1;            
                 println!("\n{} aprendeu com este combate, e pode melhorar seus atributos!", heroi.nome);
-                heroi.distribuir_pontos(1+soma_pontos);
+                heroi.distribuir_pontos(1);
             }
-
-            let drop_pocoes: u8 = rand::thread_rng().gen_range(1..=3);
+            
+            let quant_pocoes = if dificil == true {1..=5} else {1..=3};
+            let drop_pocoes: u8 = rand::thread_rng().gen_range(quant_pocoes);
             pocoes += drop_pocoes;
             println!("\nAchou {} poções ao explorar o local!", drop_pocoes);
         }
@@ -531,7 +530,7 @@ fn combate(heroi: &mut Heroi, inimigo: &mut Inimigo,pocoes: &mut u8, &_rounds: &
         };
         if dano_causado > 0{  
             inimigo.vida -= dano_causado;
-            println!("\nCausou {} de dano á {}\n", dano_causado, inimigo.nome);
+            println!("\nCausou {} de dano á {}", dano_causado, inimigo.nome);
         }
 
 
